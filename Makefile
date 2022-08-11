@@ -43,7 +43,9 @@ USEMODULE += stdio_cdc_acm
 FEATURES_REQUIRED += cpp
 FEATURES_REQUIRED += libstdcpp
 
+FEATURES_REQUIRED += periph_i2c
 FEATURES_REQUIRED += periph_spi
+FEATURES_REQUIRED += periph_uart
 
 FEATURES_OPTIONAL += periph_rtc
 
