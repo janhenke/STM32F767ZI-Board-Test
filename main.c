@@ -12,10 +12,11 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "periph/gpio.h"
 #include "periph/i2c.h"
 #include "periph/spi.h"
 #include "periph/uart.h"
-#include "shell.h"
+#include "xtimer.h"
 
 int main(void)
 {
@@ -26,13 +27,10 @@ int main(void)
 	spi_init(spi_dev);
 	spi_init_cs(spi_dev, SPI_CS_UNDEF);
 
-	const uart_t uart_dev = UART_DEV(1);
+	const uart_t uart_dev = UART_DEV(0);
 	uart_init(uart_dev, 115200, NULL, NULL);
 
-	(void)puts("Welcome to RIOT!");
-	(void)puts("Hello World!");
-
-	const uint8_t data = 0b10101010;
+	const uint8_t data = 0b10111001;
 
 	while (true) {
 		i2c_acquire(i2c_dev);
@@ -45,10 +43,8 @@ int main(void)
 
 		uart_write(uart_dev, &data, 1);
 
+		xtimer_msleep(100);
 	}
-
-	char line_buf[SHELL_DEFAULT_BUFSIZE];
-	shell_run(NULL, line_buf, SHELL_DEFAULT_BUFSIZE);
 
 	return 0;
 }

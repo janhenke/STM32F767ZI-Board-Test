@@ -40,9 +40,12 @@ USEMODULE += saul_default
 # redirect stdio to USB serial
 USEMODULE += stdio_cdc_acm
 
+USEMODULE += xtimer
+
 FEATURES_REQUIRED += cpp
 FEATURES_REQUIRED += libstdcpp
 
+FEATURES_REQUIRED += periph_gpio
 FEATURES_REQUIRED += periph_i2c
 FEATURES_REQUIRED += periph_spi
 FEATURES_REQUIRED += periph_uart
